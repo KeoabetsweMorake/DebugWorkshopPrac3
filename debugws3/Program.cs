@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Data;
 
 namespace debugws3
 {
@@ -88,36 +89,37 @@ namespace debugws3
       double result = numbersToBeCalculated[0];
 
       var j = 0;
-      for (var i = 1; i < numbersToBeCalculated.Length; i++)
-      {
-        switch (operations[j])
-        {
-          case '+':
-            {
-              result += numbersToBeCalculated[i];
-              break;
-            }
-          case '-':
-            {
-              result -= numbersToBeCalculated[i];
-              break;
-            }
-          case '*':
-            {
-              result *= numbersToBeCalculated[i];
-              break;
-            }
-          case '/':
-            {
-              result /= numbersToBeCalculated[i];
-              break;
-            }
-          default:
-            break;
-        }
-        j++;
-      }
-
+      // for (var i = 1; i < numbersToBeCalculated.Length; i++)
+      // {
+      //   switch (operations[j])
+      //   {
+      //     case '+':
+      //       {
+      //         result += numbersToBeCalculated[i];
+      //         break;
+      //       }
+      //     case '-':
+      //       {
+      //         result -= numbersToBeCalculated[i];
+      //         break;
+      //       }
+      //     case '*':
+      //       {
+      //         result *= numbersToBeCalculated[i];
+      //         break;
+      //       }
+      //     case '/':
+      //       {
+      //         result /= numbersToBeCalculated[i];
+      //         break;
+      //       }
+      //     default:
+      //       break;
+      //   }
+      //   j++;
+      // }
+      DataTable table = new DataTable();
+      result = Convert.ToDouble(table.Compute(input,null));
       return new Result(result, "");
     }
 
